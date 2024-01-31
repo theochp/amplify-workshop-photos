@@ -4,12 +4,20 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AddPost from './ui-components/AddPost';
 import { StorageImage } from '@aws-amplify/ui-react-storage';
+import { Amplify } from "aws-amplify";
+import amplifyConfig from "./amplifyconfiguration.json";
+import "@aws-amplify/ui-react/styles.css";
+import { Authenticator } from "@aws-amplify/ui-react";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+Amplify.configure(amplifyConfig);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <nav>My Navbar</nav>
-    Hello, World!
+    <Authenticator>
+      <nav>My Navbar</nav>
+      Hello, World!
+    </Authenticator>
   </React.StrictMode>
 );
 
